@@ -1,11 +1,10 @@
 import javax.swing.JOptionPane;
 
 public class Main {
-    private static Reserva playlist = new Reserva();
 
     public static void main(String[] args) {
-        boolean sair = false;
-        while (!sair) {
+        boolean finalizar = false;
+        while (!finalizar) {
             String opcaoStr = JOptionPane.showInputDialog(null,
                     "1. Reservar Mesa\n" +
                             "2. Pesquisar Reserva\n" +
@@ -42,29 +41,23 @@ public class Main {
 
     }
 
-    private static void cancelarReserva() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'cancelarReserva'");
-    }
-
-    private static void imprimirLista() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'imprimirLista'");
-    }
-
-    private static void imprimirReserva() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'imprimirReserva'");
-    }
-
     private static void pesquisarReserva() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'pesquisarReserva'");
+    
     }
 
     private static void reservarMesa() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'reservarMesa'");
+    
     }
 
+    private static void cancelarReserva() {
+        
+    }
+
+    private static void imprimirLista() {
+       
+    }
+
+    private static void imprimirReserva() {
     
+    }
+}
