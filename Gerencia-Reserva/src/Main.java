@@ -7,7 +7,8 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        // lista do tipo reserva
+        // criar uma lista de reservas 
+        List<Reserva> listaReserva = new ArrayList<>();
 
         boolean finalizar = false;
         while (!finalizar) {
@@ -125,8 +126,7 @@ public class Main {
                              "Opção 2: " + (opcaoPgParceladoSelecionada ? "Sim" : "Não");
            JOptionPane.showMessageDialog(null, mensagem, "Dados Selecionados", JOptionPane.INFORMATION_MESSAGE);
        }
-       // criar uma lista de reservas 
-       List<Reserva> listaReserva = new ArrayList<>();
+       
     }
 
     private static void cancelarReserva() {
