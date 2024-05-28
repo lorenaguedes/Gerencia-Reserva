@@ -1,6 +1,8 @@
 import javax.swing.JOptionPane;
 import javax.swing.*;
 import java.awt.GridLayout;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
 
@@ -124,6 +126,7 @@ public class Main {
            JOptionPane.showMessageDialog(null, mensagem, "Dados Selecionados", JOptionPane.INFORMATION_MESSAGE);
        }
        // criar uma lista de reservas 
+       List<Reserva> listaReserva = new ArrayList<>();
     }
 
     private static void cancelarReserva() {
