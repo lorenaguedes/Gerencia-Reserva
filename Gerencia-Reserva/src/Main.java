@@ -5,10 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
-
+    static GerenciaListaReserva listaReserva = new GerenciaListaReserva();
     public static void main(String[] args) {
         // criar uma lista de reservas 
-        List<Reserva> listaReserva = new ArrayList<>();
+        
+        
 
         boolean finalizar = false;
         while (!finalizar) {
@@ -49,10 +50,31 @@ public class Main {
     }
 
     private static void pesquisarReserva() {
-    
+     // objeto reserva
+        Reserva reserva;
+        
+       // Criar painel para os componentes
+       JPanel painel = new JPanel();
+       painel.setLayout(new GridLayout(5, 2, 5, 5)); // Layout em grade
+
+       // Adicionar rótulos e campos de texto
+       painel.add(new JLabel("CPF/CNPJ:"));
+       painel.add(new JTextField(15));
+
+       int opcao = JOptionPane.showConfirmDialog(null, painel, "Pesquisar reserva", JOptionPane.OK_CANCEL_OPTION);
+
+       // Processar a resposta do usuário
+       if (opcao == JOptionPane.OK_OPTION) {
+           // Obter valores dos campos de texto
+           String cpf = ((JTextField) painel.getComponent(1)).getText();
+           listaReserva.pesquisarReserva(cpf);
+       }
     }
 
     private static void reservarMesa() {
+        // objeto reserva
+        Reserva reserva;
+        
        // Criar painel para os componentes
        JPanel painel = new JPanel();
        painel.setLayout(new GridLayout(5, 2, 5, 5)); // Layout em grade
@@ -101,30 +123,16 @@ public class Main {
            boolean opcaoPgParceladoSelecionada = caixaSelecaoParcelado.isSelected();
 
            // separa tipo de cliente
-           if (opcaoCpfSelecionada) {
-             PessoaFisica cliente = new PessoaFisica(nome, cpf);
-                if (opcaoPgVistaSelecionada) {
-                    Reserva reserva = new Reserva(cliente, opcaoPgVistaSelecionada);
-                }else{
-                    Reserva reserva = new Reserva(cliente, opcaoPgParceladoSelecionada);
+                if (opcaoCpfSelecionada) {
+                    PessoaFisica cliente = new PessoaFisica(nome, cpf);
+                    reserva = new Reserva(cliente, opcaoPgVistaSelecionada ? opcaoPgVistaSelecionada : opcaoPgParceladoSelecionada);
+                } else {
+                    PessoaJuridica cliente = new PessoaJuridica(nome, cpf);
+                    reserva = new Reserva(cliente, opcaoPgVistaSelecionada ? opcaoPgVistaSelecionada : opcaoPgVistaSelecionada);
                 }
-           }else{
-             PessoaJuridica cliente = new PessoaJuridica(nome,cpf);
-                if (opcaoPgVistaSelecionada) {
-                Reserva reserva = new Reserva(cliente, opcaoPgVistaSelecionada);
-            }else{
-                Reserva reserva = new Reserva(cliente, opcaoPgParceladoSelecionada);
-            }
-           }
 
-           // Exibir informações
-           String mensagem = "Nome: " + nome + "\n" +
-                             "Cpf: " + cpf + "\n" +
-                             "Opção 1: " + (opcaoCpfSelecionada ? "Sim" : "Não") + "\n" +
-                             "Opção 2: " + (opcaoCnpjSelecionada ? "Sim" : "Não")+ "\n" +
-                             "Opção 1: " + (opcaoPgVistaSelecionada ? "Sim" : "Não") + "\n" +
-                             "Opção 2: " + (opcaoPgParceladoSelecionada ? "Sim" : "Não");
-           JOptionPane.showMessageDialog(null, mensagem, "Dados Selecionados", JOptionPane.INFORMATION_MESSAGE);
+           listaReserva.reservarMesa(reserva);
+        
        }
        
     }
