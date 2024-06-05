@@ -8,7 +8,7 @@ public class PessoaJuridica extends Cliente{
 
     @Override
     public String toString(){
-        return this.nome + this.cnpj ;
+        return this.nome + this.cnpj;
     }
 
     public String getCnpj() {

@@ -25,8 +25,9 @@ public class Reserva implements Pagamento{
 
     // falta  retornar tipo do cliente 
     @Override 
-    public String toString(){
-       return cliente.nome + this.getPagamentoAvista();
+    public String toString() {
+        String pagamento = getPagamentoAvista() ? "À vista" : "Parcelado";
+        return String.format("%-20s (%-3s) - %s", cliente.getNome(), cliente.getClass().getSimpleName(), pagamento);
     }
 
     @Override

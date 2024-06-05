@@ -138,14 +138,30 @@ public class Main {
     }
 
     private static void cancelarReserva() {
-        
+ 
+       // Criar painel para os componentes
+       JPanel painel = new JPanel();
+       painel.setLayout(new GridLayout(5, 2, 5, 5)); // Layout em grade
+
+       // Adicionar rótulos e campos de texto
+       painel.add(new JLabel("CPF/CNPJ:"));
+       painel.add(new JTextField(15));
+
+       int opcao = JOptionPane.showConfirmDialog(null, painel, "Deletar reserva", JOptionPane.OK_CANCEL_OPTION);
+
+       // Processar a resposta do usuário
+       if (opcao == JOptionPane.OK_OPTION) {
+           // Obter valores dos campos de texto
+           String cpf = ((JTextField) painel.getComponent(1)).getText();
+           listaReserva.cancelarReserva(cpf);
+       }
     }
 
     private static void imprimirLista() {
-       
+        listaReserva.imprimirListaReserva();
     }
 
     private static void imprimirReserva() {
-    
+        listaReserva.imprimirLista();
     }
 }
