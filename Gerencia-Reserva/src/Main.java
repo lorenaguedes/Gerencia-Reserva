@@ -1,4 +1,3 @@
-import javax.swing.JOptionPane;
 import javax.swing.*;
 import java.awt.GridLayout;
 import java.util.ArrayList;
@@ -21,32 +20,41 @@ public class Main {
                             "5. Cancelar Reserva\n" +
                             "6. Finalizar\n" +
                             "Escolha uma opção:");
-            int opcao = Integer.parseInt(opcaoStr);
 
-            switch (opcao) {
-                case 1:
-                    reservarMesa();
-                    break;
-                case 2:
-                    pesquisarReserva();
-                    break;
-                case 3:
-                    imprimirReserva();
-                    break;
-                case 4:
-                    imprimirLista();
-                    break;
-                case 5:
-                    cancelarReserva();
-                    break;
-                case 6:
-                    finalizar = true;
-                    break;
-                default:
-                    JOptionPane.showMessageDialog(null, "Opção inválida!");
+            if (opcaoStr == null) {
+                // Usuário clicou em cancelar ou fechou a janela
+                JOptionPane.showMessageDialog(null, "Operação cancelada.");
+                continue;
+            }
+
+            try {
+                int opcao = Integer.parseInt(opcaoStr);
+                switch (opcao) {
+                    case 1:
+                        reservarMesa();
+                        break;
+                    case 2:
+                        pesquisarReserva();
+                        break;
+                    case 3:
+                        imprimirReserva();
+                        break;
+                    case 4:
+                        imprimirLista();
+                        break;
+                    case 5:
+                        cancelarReserva();
+                        break;
+                    case 6:
+                        finalizar = true;
+                        break;
+                    default:
+                        JOptionPane.showMessageDialog(null, "Opção inválida!");
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Entrada inválida! Por favor, insira um número.");
             }
         }
-
     }
 
     private static void pesquisarReserva() {
