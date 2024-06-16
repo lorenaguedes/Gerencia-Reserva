@@ -13,7 +13,7 @@ public class Main {
         boolean finalizar = false;
         while (!finalizar) {
             String opcaoStr = JOptionPane.showInputDialog(null,
-                    "1. Reservar Mesa\n" +
+                            "1. Reservar Mesa\n" +
                             "2. Pesquisar Reserva\n" +
                             "3. Imprimir Reserva\n" +
                             "4. Imprimir lista de espera\n" +
@@ -24,7 +24,7 @@ public class Main {
             if (opcaoStr == null) {
                 // Usuário clicou em cancelar ou fechou a janela
                 JOptionPane.showMessageDialog(null, "Operação cancelada.");
-                continue;
+                break;
             }
 
             try {
